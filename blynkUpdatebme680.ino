@@ -85,18 +85,22 @@ void myTimerEvent()
   int temperature = temp/100;
   humidity = humidity % 1000;
   pressure = pressure % 100;
-  if (temperature > 20)
+  if (temperature > 40)
   {
-   Blynk.logEvent("temperature","Temperature is high");
+   Blynk.logEvent("temperature","Temperature is too high!");
   }
-  // if (humidity > 20)
-  // {
-  //  Blynk.logEvent("humidity, temperature");
-  // }
-  // if (pressure > 20)
-  // {
-  //  Blynk.logEvent("pressure, temperature");
-  // }
+  if (temperature < 30)
+  {
+   Blynk.logEvent("temperature","Temperature is too low!");
+  }
+  if (pressure > 15000)
+  {
+   Blynk.logEvent("pressure, Blood pressure is too high");
+  }
+   if (pressure < 90000)
+  {
+   Blynk.logEvent("pressure, Blood pressure is too high");
+  }
   Blynk.virtualWrite(V5, temperature);
   Blynk.virtualWrite(V7, humidity);
   Blynk.virtualWrite(V6, pressure);  
